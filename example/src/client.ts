@@ -15,13 +15,13 @@ monaco.languages.register({
     id: 'storyscript',
     extensions: ['.story'],
     aliases: ['Storyscript', 'storyscript'],
-    mimetypes: ['text/storyscript'],
+    mimetypes: ['text/plain'],
 });
 
 // create Monaco editor
 const value = `a = 0`;
 const editor = monaco.editor.create(document.getElementById("container")!, {
-    model: monaco.editor.createModel(value, 'json', monaco.Uri.parse('inmemory://model.story')),
+    model: monaco.editor.createModel(value, 'storyscript', monaco.Uri.parse('inmemory://model.story')),
     glyphMargin: true,
     lightbulb: {
         enabled: true
@@ -32,7 +32,7 @@ const editor = monaco.editor.create(document.getElementById("container")!, {
 MonacoServices.install(editor);
 
 // create the web socket
-const url = createUrl('/sampleServer')
+const url = createUrl('/storyscriptserver')
 const webSocket = createWebSocket(url);
 // listen when the web socket is opened
 listen({

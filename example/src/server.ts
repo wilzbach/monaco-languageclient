@@ -32,7 +32,7 @@ const wss = new ws.Server({
 });
 server.on('upgrade', (request: http.IncomingMessage, socket: net.Socket, head: Buffer) => {
     const pathname = request.url ? url.parse(request.url).pathname : undefined;
-    if (pathname === '/sampleServer') {
+    if (pathname === '/storyscriptserver') {
         wss.handleUpgrade(request, socket, head, webSocket => {
             const socket: rpc.IWebSocket = {
                 send: content => webSocket.send(content, error => {
